@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow: hidden;
+    text-align:center;
+    color:#fff;
+  }
+
+  /* ---------- SCREEN SYSTEM ---------- */
+  .screen {
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:20px;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .active { display:flex; }
+
+  @keyframes fadeIn {
+    from {opacity:0; transform: scale(1.05);}
+    to {opacity:1; transform: scale(1);}
+  }
+
+  h1,h2,h3 { margin:15px 0; }
+
+  button {
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    background:#ff2e63;
+    color:white;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+  }
+
+  button:hover { transform: scale(1.1); }
+
+  /* ---------- GRID ---------- */
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:15px;
+    width:90%;
+    max-height:75vh;
+    overflow:auto;
+    padding:10px;
+  }
+
+  .grid img,
+  .grid video {
+    width:100%;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  }
+
+  /* ---------- GIFT BOX ---------- */
+  #giftBox {
+    width:180px;
+    height:180px;
+    background: linear-gradient(145deg,#ff4b7d,#ff2e63);
+    border-radius:20px;
+    position:relative;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2.5em;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    transition: transform 0.4s;
+  }
+
+  #giftBox:hover { transform: scale(1.25); }
+
+  #giftLid {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:50%;
+    background: linear-gradient(145deg,#ff6b9a,#ff4b7d);
+    border-radius:20px 20px 0 0;
+    transform-origin:top;
+    transition: transform 1s;
+  }
+
+  #giftBox::before,
+  #giftBox::after {
+    content:"";
+    position:absolute;
+    background:white;
+    opacity:0.7;
+  }
+
+  #giftBox::before {
+    width:20px;
+    height:100%;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  #giftBox::after {
+    height:20px;
+    width:100%;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  canvas {
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
+    z-index:9999;
+  }
+
+  /* ---------- PASSWORD SCREEN ---------- */
+  #lock {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:10000;
+  }
+
+  input {
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    text-align:center;
+    font-size:16px;
+  }
+
+  /* ---------- FLOATING HEARTS ---------- */
+  .heart {
+    position:fixed;
+    color:#ff2e63;
+    animation: floatUp 1.2s linear forwards;
+    pointer-events:none;
+  }
+
+  @keyframes floatUp {
+    from {transform:translateY(0); opacity:1;}
+    to {transform:translateY(-120px); opacity:0;}
+  }
+
+  /* ---------- GIFT PAGE (NEW) ---------- */
+  .giftGrid {
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:15px;
+    width:90%;
+  }
+
+  .giftGrid img {
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  }
+
+
+#intro{
+position:fixed;width:100%;height:100%;
+background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+z-index:11000;
+}
+#questionArea{position:relative;width:100%;height:250px;}
+#yesBtn{position:absolute;left:10%;top:100px;}
+#noBtn{position:absolute;left:60%;top:100px;}
+#countText{font-size:120px;font-weight:bold;}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div id="intro">
+  <h2>💖 Wait! Before Entering 💖</h2>
+  <h3> Do you like Sreekanth? 😏</h3>
+  <div id="questionArea">
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 😒</button>
+  </div>
+</div>
+
+<div id="lock" style="display:none;">
+  <h2>😍 Correct Answer!</h2>
+    <p>🔐 Security Question:<br>
+    What is the name of the most beautiful girl in the entire universe? ✨💖</p>
+  <input id="pass" placeholder="Enter password">
+  <button onclick="unlock()">Unlock 🎁</button>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<!-- STEP 1 -->
+
+<div class="screen active" id="screen1">
+  <h2>🎉 Happy Birthday Supriya 🎉</h2>
+  <p>🎁 Welcome to your Birthday Gift Box of Wishes! Inside are beautiful memories, heartfelt wishes, and a few surprises made especially for you 💖✨</p>
+  <button onclick="startGift()">Open 🎁</button>
+</div>
+
+
+<!-- STEP 2 -->
+<div class="screen" id="screen2">
+  <h3>🎀 Tap to Reveal the Magic 💖</h3>
+  <div id="giftBox">
+    🎁
+    <div id="giftLid"></div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="screen" id="screen3">
+  <h2>Your Beautiful Memories 💖</h2>
+  <div class="grid">
+    <img src="photo1.png">
+    <img src="photo2.png">
+  </div>
+  <button onclick="nextStep(4)">Next Videos ➡</button>
+</div>
+
+<!-- STEP 4 -->
+<div class="screen" id="screen4">
+  <h2>Special Video Memories 🎥</h2>
+  <div class="grid">
+    <video controls src="video1.mp4"></video>
+    <video controls src="video2.mp4"></video>
+  </div>
+  <button onclick="startCountdown()">Final Surprise 💖</button>
+</div>
+
+<div class="screen" id="screenCountdown">
+  <h1 id="countText">3</h1>
+</div>
+
+<!-- 🎁 NEW STEP 5: REAL GIFT PHOTOS -->
+<div class="screen" id="screen5">
+  <h3>🎁 Your Real Gifts 💖</h3>
+
+  <div class="giftGrid">
+    <img src="gift1.png">
+    <img src="gift2.png">
+    <img src="gift3.png">
+    <img src="gift4.png">
+  </div>
+
+  <h5>💖 You deserve everything beautiful, Supriya 💖</h5>
+</div>
+
+<script>
+
+window.addEventListener("load",()=>{
+ const noBtn=document.getElementById("noBtn");
+ const yesBtn=document.getElementById("yesBtn");
+ if(!noBtn) return;
+
+function moveNo(){
+
+    const positions = [
+        {left:"10%", top:"55%"},
+        {left:"60%", top:"55%"},
+        {left:"20%", top:"70%"},
+        {left:"55%", top:"70%"},
+        {left:"35%", top:"82%"}
+    ];
+
+    const pos = positions[Math.floor(Math.random()*positions.length)];
+
+    noBtn.style.left = pos.left;
+    noBtn.style.top = pos.top;
+}
+
+ noBtn.addEventListener("mouseenter",moveNo);
+ noBtn.addEventListener("click",moveNo);
+
+ yesBtn.addEventListener("click",()=>{
+   document.getElementById("intro").style.display="none";
+   document.getElementById("lock").style.display="flex";
+   startMusic();
+ });
+});
+
+function startCountdown(){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById("screenCountdown").classList.add("active");
+
+ let count=3;
+ const text=document.getElementById("countText");
+
+ const timer=setInterval(()=>{
+   count--;
+   if(count===2) text.innerHTML="2";
+   else if(count===1) text.innerHTML="1";
+   else if(count===0) text.innerHTML="GO! 🎉";
+   else{
+     clearInterval(timer);
+     document.getElementById("screenCountdown").classList.remove("active");
+     document.getElementById("screen5").classList.add("active");
+     triggerFireworks();
+   }
+ },1000);
+}
+
+
+/* ---------- PASSWORD ---------- */
+function unlock(){
+  let p = document.getElementById("pass").value.toLowerCase();
+  if(p === "supriya"){
+    document.getElementById("lock").style.display="none";
+  } else {
+    alert("Try again 💖");
+  }
+}
+
+/* ---------- NAVIGATION ---------- */
+function startGift(){
+  nextStep(2);
+}
+
+function nextStep(step){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("screen"+step).classList.add("active");
+
+  if(step === 4) triggerFireworks();
+}
+
+/* ---------- MUSIC ---------- */
+function startMusic(){
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.5;
+  music.play().catch(()=>{});
+}
+
+/* ---------- GIFT OPEN ---------- */
+document.getElementById("giftBox").addEventListener("click", ()=>{
+  document.getElementById("giftLid").style.transform="rotateX(-130deg)";
+  setTimeout(()=> nextStep(3), 1000);
+});
+
+/* ---------- HEART EFFECT ---------- */
+document.addEventListener("mousemove", e=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=e.clientX+"px";
+  h.style.top=e.clientY+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),1000);
+});
+
+/* ---------- CONFETTI ---------- */
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+
+let W=window.innerWidth,H=window.innerHeight;
+canvas.width=W;canvas.height=H;
+
+let pieces=[];
+for(let i=0;i<120;i++){
+  pieces.push({
+    x:Math.random()*W,
+    y:Math.random()*H,
+    r:Math.random()*6+2,
+    d:Math.random()*100,
+    color:`hsl(${Math.random()*360},100%,60%)`
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  pieces.forEach(p=>{
+    ctx.fillStyle=p.color;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.y += 1;
+    if(p.y>H){p.y=0;p.x=Math.random()*W;}
+  });
+}
+setInterval(draw,20);
+
+/* ---------- FIREWORKS ---------- */
+function triggerFireworks(){
+  let fw=document.createElement("canvas");
+  fw.width=W;fw.height=H;
+  fw.style.position="fixed";
+  fw.style.top=0;fw.style.left=0;
+  document.body.appendChild(fw);
+
+  let f=fw.getContext("2d");
+  let particles=[];
+
+  function burst(){
+    for(let i=0;i<80;i++){
+      particles.push({
+        x:W/2,
+        y:H/2,
+        vx:(Math.random()-0.5)*10,
+        vy:(Math.random()-0.5)*10,
+        alpha:1
+      });
+    }
+  }
+
+  function animate(){
+    f.clearRect(0,0,W,H);
+    if(particles.length===0) burst();
+
+    particles.forEach(p=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.alpha-=0.02;
+      f.globalAlpha=p.alpha;
+      f.fillStyle="white";
+      f.fillRect(p.x,p.y,2,2);
+    });
+
+    particles=particles.filter(p=>p.alpha>0);
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+</script>
+
+</body>
+</html>
