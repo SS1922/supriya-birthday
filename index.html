@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Supriya 💖</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#ffdde1,#ee9ca7);overflow-x:hidden;text-align:center;color:#fff;min-height:100vh}
+.screen{display:none;min-height:100vh;justify-content:center;align-items:center;flex-direction:column;padding:30px 20px;animation:fadeIn 0.7s ease}
+.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+h1{font-size:2em;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,0.2)}
+h2{font-size:1.6em;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,0.2)}
+h3{font-size:1.1em;margin-bottom:5px}
+p{font-size:1em;line-height:1.6;margin-bottom:10px;max-width:520px}
+.btn{padding:13px 30px;font-size:1em;border:none;border-radius:30px;background:linear-gradient(135deg,#ff2e63,#ff6b9a);color:#fff;cursor:pointer;margin:8px 5px;transition:.3s;box-shadow:0 5px 20px rgba(255,46,99,0.4);font-weight:600;letter-spacing:.5px}
+.btn:hover{transform:scale(1.08);box-shadow:0 8px 25px rgba(255,46,99,0.6)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ===== LOCK ===== */
+#lockScreen{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);position:relative;overflow:hidden}
+#lockScreen::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,46,99,0.15),transparent);border-radius:50%;top:-50px;right:-50px;pointer-events:none}
+.lock-card{background:rgba(255,255,255,0.08);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.2);border-radius:24px;padding:40px 35px;max-width:420px;width:90%;position:relative;z-index:2}
+.lock-emoji{font-size:3em;margin-bottom:15px}
+.lock-card h2{color:#fff;margin-bottom:8px;font-size:1.4em}
+.lock-card p{color:rgba(255,255,255,0.7);font-size:0.9em;margin-bottom:20px}
+.lock-input{width:100%;padding:14px 18px;border-radius:12px;border:2px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:1em;text-align:center;outline:none;transition:.3s;margin-bottom:8px}
+.lock-input::placeholder{color:rgba(255,255,255,0.5)}
+.lock-input:focus{border-color:rgba(255,107,154,0.8);background:rgba(255,255,255,0.15)}
+.lock-hint{font-size:0.75em;color:rgba(255,255,255,0.4);margin-top:5px}
+.shake{animation:shake 0.4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+/* ===== WELCOME ===== */
+#screen1{background:linear-gradient(135deg,#ffdde1,#ee9ca7,#ffd1dc)}
+.welcome-emoji{font-size:4em;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.welcome-card{background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);border-radius:24px;padding:30px;max-width:480px;border:1px solid rgba(255,255,255,0.4)}
+
+/* ===== CAKE SEQUENCE ===== */
+
+#screen2{
+  background:radial-gradient(
+    ellipse at 50% 0%,
+    #6d4cff 0%,
+    #5a3df0 40%,
+    #7b61ff 100%
+  );
+}
+
+/* Flower bed */
+.flower-bed{position:relative;width:100%;height:130px;display:flex;align-items:flex-end;justify-content:center;gap:16px;margin-bottom:6px}
+.flower{position:relative;width:44px;height:86px;opacity:0;transform:translateY(18px) scale(.7);animation:bloomIn .7s forwards}
+.flower .stem{position:absolute;bottom:0;left:50%;width:4px;height:52px;background:linear-gradient(#3fae6a,#2e7d4f);transform:translateX(-50%);border-radius:2px}
+.flower .leaf{position:absolute;bottom:16px;width:15px;height:8px;background:#3fae6a;border-radius:50% 50% 50% 0;left:50%}
+.flower .leaf.l{transform:translate(-95%,0) rotate(-20deg)}
+.flower .leaf.r{transform:translate(10%,0) rotate(20deg) scaleX(-1)}
+.flower .bloom{position:absolute;top:0;left:50%;transform:translateX(-50%);width:44px;height:44px}
+.petal{position:absolute;width:19px;height:26px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;top:9px;left:13px;transform-origin:50% 100%}
+.petal:nth-child(1){transform:rotate(0deg) translateY(-13px)}
+.petal:nth-child(2){transform:rotate(72deg) translateY(-13px)}
+.petal:nth-child(3){transform:rotate(144deg) translateY(-13px)}
+.petal:nth-child(4){transform:rotate(216deg) translateY(-13px)}
+.petal:nth-child(5){transform:rotate(288deg) translateY(-13px)}
+.flower .center{position:absolute;top:13px;left:13px;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 -2px 4px rgba(0,0,0,.2)}
+.flower.pink .petal{background:radial-gradient(circle at 35% 30%,#ffd1e6,#ff6fa5)}
+.flower.pink .center{background:#ffd34d}
+.flower.peach .petal{background:radial-gradient(circle at 35% 30%,#ffe3c2,#ff9d6b)}
+.flower.peach .center{background:#ff7a3d}
+.flower.lilac .petal{background:radial-gradient(circle at 35% 30%,#ece0ff,#b48cff)}
+.flower.lilac .center{background:#ffd34d}
+.flower.white .petal{background:radial-gradient(circle at 35% 30%,#ffffff,#f0e6ff)}
+.flower.white .center{background:#ffb84d}
+@keyframes bloomIn{to{opacity:1;transform:translateY(0) scale(1)}}
+.petal-fall{position:absolute;top:-10px;font-size:1em;animation:petalFall linear forwards;pointer-events:none;opacity:.9}
+@keyframes petalFall{to{transform:translateY(380px) rotate(360deg);opacity:0}}
+.stage-caption{min-height:1.6em;font-size:1em;opacity:.95;margin-bottom:8px;transition:opacity .4s}
+.stage-caption.fade{opacity:0}
+
+/* ===== REALISTIC CAKE ===== */
+.cake-stage-wrap{position:relative;width:100%;max-width:380px;min-height:400px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.cake-stage{position:relative;margin:6px auto 0;width:300px;opacity:0;transform:scale(.85);transition:opacity .7s,transform .7s;perspective:800px}
+.cake-stage.show{opacity:1;transform:scale(1)}
+
+/* Plate */
+.cake-plate{width:300px;height:22px;background:linear-gradient(180deg,#f8f0ff 0%,#e8d4ff 40%,#c9a0ff 100%);border-radius:50%;margin:0 auto;box-shadow:0 8px 24px rgba(150,80,255,0.5),inset 0 2px 4px rgba(255,255,255,0.8);position:relative;z-index:1}
+.cake-plate::after{content:'';position:absolute;top:4px;left:8%;width:84%;height:6px;background:rgba(255,255,255,0.4);border-radius:50%}
+
+/* Tier 3 (bottom - chocolate) */
+.cake-tier3{width:240px;height:88px;margin:0 auto;position:relative;border-radius:18px 18px 4px 4px;overflow:visible;z-index:2}
+.tier3-body{width:100%;height:100%;background:linear-gradient(160deg,#8B4513 0%,#6B3410 30%,#4a2008 70%,#3a1a06 100%);border-radius:18px 18px 4px 4px;position:relative;overflow:hidden;box-shadow:inset -8px 0 20px rgba(0,0,0,0.4),inset 8px 0 12px rgba(255,160,80,0.1),0 4px 12px rgba(0,0,0,0.5)}
+.tier3-body::before{content:'';position:absolute;top:0;left:0;right:0;height:18px;background:linear-gradient(180deg,#c8a060 0%,#a07840 60%,transparent 100%);border-radius:18px 18px 0 0}
+.tier3-body::after{content:'';position:absolute;top:0;left:12%;width:76%;height:8px;background:rgba(255,220,150,0.5);border-radius:50%;filter:blur(3px)}
+/* Drip frosting on tier 3 */
+.drip{position:absolute;top:14px;width:14px;border-radius:0 0 8px 8px;background:linear-gradient(180deg,#fff5e0,#f0d090);box-shadow:inset -2px 0 4px rgba(0,0,0,0.15)}
+.tier3-deco{position:absolute;bottom:10px;width:100%;display:flex;justify-content:center;gap:18px;font-size:1.2em}
+.choco-stripe{position:absolute;top:20px;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,rgba(255,200,100,0.3) 0 20px,transparent 20px 40px)}
+
+/* Tier 2 (middle - pink velvet) */
+.cake-tier2{width:188px;height:80px;margin:0 auto;position:relative;z-index:3}
+.tier2-body{width:100%;height:100%;background:linear-gradient(160deg,#ff85c0 0%,#e0408a 35%,#b82568 70%,#8a1548 100%);border-radius:14px 14px 4px 4px;position:relative;overflow:hidden;box-shadow:inset -6px 0 16px rgba(0,0,0,0.35),inset 6px 0 10px rgba(255,180,220,0.2),0 3px 10px rgba(0,0,0,0.4)}
+.tier2-body::before{content:'';position:absolute;top:0;left:0;right:0;height:16px;background:linear-gradient(180deg,#ffcce8 0%,#ff90c8 60%,transparent 100%);border-radius:14px 14px 0 0}
+.tier2-body::after{content:'';position:absolute;top:0;left:10%;width:80%;height:7px;background:rgba(255,255,255,0.45);border-radius:50%;filter:blur(2px)}
+.tier2-flowers{position:absolute;bottom:8px;width:100%;display:flex;justify-content:center;gap:10px;font-size:1em;pointer-events:none}
+
+/* Tier 1 (top - lavender) */
+.cake-tier1{width:132px;height:72px;margin:0 auto;position:relative;z-index:4}
+.tier1-body{width:100%;height:100%;background:linear-gradient(160deg,#c9a8ff 0%,#9b6dff 35%,#7040d0 70%,#5030a0 100%);border-radius:12px 12px 4px 4px;position:relative;overflow:hidden;box-shadow:inset -5px 0 14px rgba(0,0,0,0.3),inset 5px 0 8px rgba(200,160,255,0.25),0 3px 8px rgba(0,0,0,0.35)}
+.tier1-body::before{content:'';position:absolute;top:0;left:0;right:0;height:14px;background:linear-gradient(180deg,#e8d4ff 0%,#c0a0ff 60%,transparent 100%);border-radius:12px 12px 0 0}
+.tier1-body::after{content:'';position:absolute;top:0;left:8%;width:84%;height:6px;background:rgba(255,255,255,0.5);border-radius:50%;filter:blur(2px)}
+.tier1-pearls{position:absolute;bottom:10px;width:100%;display:flex;justify-content:center;gap:8px}
+.pearl{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffffff,#e0d0ff);box-shadow:0 1px 3px rgba(0,0,0,0.3)}
+
+/* Frosting top cap */
+.cake-top-cap{width:80px;height:24px;margin:0 auto;background:linear-gradient(180deg,#fff8ff 0%,#f5e0ff 100%);border-radius:40% 40% 0 0;position:relative;z-index:5;box-shadow:0 -3px 8px rgba(160,80,255,0.3)}
+.cake-top-cap::before{content:'⭐';position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:1.6em;filter:drop-shadow(0 0 8px gold)}
+
+/* Candles */
+.candle-row{display:flex;justify-content:center;gap:10px;margin-bottom:0px;position:relative;z-index:6}
+.candle{display:flex;flex-direction:column;align-items:center}
+.candle-body{width:10px;height:36px;border-radius:3px 3px 0 0;position:relative;overflow:hidden}
+.candle-body::after{content:'';position:absolute;top:0;right:2px;width:2px;height:100%;background:rgba(255,255,255,0.35);border-radius:1px}
+.candle-c1 .candle-body{background:linear-gradient(135deg,#ff9de2,#ff6bcb)}
+.candle-c2 .candle-body{background:linear-gradient(135deg,#a78bfa,#7c3aed)}
+.candle-c3 .candle-body{background:linear-gradient(135deg,#fbbf24,#f59e0b)}
+.candle-c4 .candle-body{background:linear-gradient(135deg,#34d399,#059669)}
+.candle-c5 .candle-body{background:linear-gradient(135deg,#60a5fa,#2563eb)}
+.candle-c6 .candle-body{background:linear-gradient(135deg,#f87171,#dc2626)}
+.candle-wick{width:2px;height:7px;background:#666;margin-bottom:1px;border-radius:1px}
+.flame{width:14px;height:22px;position:relative;opacity:0;transition:opacity .4s;margin-bottom:-2px}
+.flame.lit{opacity:1;animation:flicker .25s infinite alternate}
+.flame.off{opacity:0!important}
+.flame-inner{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:8px;height:14px;background:radial-gradient(ellipse at 50% 90%,#fff8c0,#ffe040,transparent);border-radius:50% 50% 20% 20%}
+.flame-outer{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:14px;height:22px;background:radial-gradient(ellipse at 50% 85%,rgba(255,200,0,0.9),rgba(255,120,0,0.7),rgba(255,60,0,0.3),transparent);border-radius:50% 50% 20% 20%}
+.flame-tip{position:absolute;top:0;left:50%;transform:translateX(-50%);width:4px;height:8px;background:rgba(180,220,255,0.6);border-radius:50%;filter:blur(1px)}
+@keyframes flicker{from{transform:scaleX(1) scaleY(1) rotate(-1.5deg)}to{transform:scaleX(1.12) scaleY(1.08) rotate(1.5deg)}}
+
+/* Smoke puffs when blown out */
+.smoke{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(200,200,220,0.7);opacity:0;pointer-events:none}
+.smoke.puff{animation:smokePuff 1.4s ease-out forwards}
+@keyframes smokePuff{0%{opacity:.8;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-40px) scale(3)}}
+
+/* Knife */
+.knife-wrap{position:absolute;top:-60px;left:50%;transform:translateX(-50%) rotate(-40deg);opacity:0;pointer-events:none;z-index:20;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6));font-size:2.6em;transition:opacity .3s}
+.knife-wrap.show{opacity:1}
+.knife-wrap.slice{animation:sliceDown 1.3s ease forwards}
+@keyframes sliceDown{
+  0%{top:-60px;transform:translateX(-50%) rotate(-40deg);opacity:1}
+  40%{top:20px;transform:translateX(-50%) rotate(-18deg);opacity:1}
+  55%{top:16px;transform:translateX(-50%) rotate(-22deg)}
+  80%{top:-20px;transform:translateX(-50%) rotate(-35deg);opacity:1}
+  100%{top:-80px;transform:translateX(-50%) rotate(-42deg);opacity:0}
+}
+.slice-mark{position:absolute;top:0;left:50%;width:5px;height:0;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.2));transform:translateX(-50%);border-radius:3px;z-index:10}
+.slice-mark.cut{animation:cutDown .6s ease forwards .5s}
+@keyframes cutDown{to{height:88px}}
+
+/* FOG / DRY ICE effect */
+.fog-container{position:absolute;bottom:0;left:-20px;right:-20px;height:80px;pointer-events:none;overflow:visible;z-index:8;display:none}
+.fog-container.active{display:block}
+.fog-puff{position:absolute;border-radius:50%;opacity:0;filter:blur(12px);background:radial-gradient(circle,rgba(220,230,255,0.85),rgba(200,210,255,0.3),transparent);pointer-events:none;animation:fogRise linear forwards}
+@keyframes fogRise{
+  0%{opacity:0;transform:scale(0.4) translateY(0)}
+  20%{opacity:0.9}
+  70%{opacity:0.6}
+  100%{opacity:0;transform:scale(2.8) translateY(-60px)}
+}
+
+/* Party poppers / crackers */
+.cracker{position:absolute;font-size:2em;opacity:0;pointer-events:none;z-index:15}
+.cracker.fire{animation:crackerFire .7s ease forwards}
+@keyframes crackerFire{
+  0%{opacity:0;transform:scale(.5) rotate(-10deg)}
+  40%{opacity:1;transform:scale(1.3) rotate(5deg)}
+  100%{opacity:1;transform:scale(1) rotate(0deg)}
+}
+.confetti-burst{position:absolute;font-size:1em;opacity:0;pointer-events:none;animation:burstUp 1.2s ease forwards}
+@keyframes burstUp{0%{opacity:1;transform:translate(0,0) scale(.6)}100%{opacity:0;transform:translate(var(--bx),var(--by)) scale(1.1) rotate(var(--br))}}
+
+/* sparkle stars around the cake */
+.sparkle{position:absolute;pointer-events:none;opacity:0;font-size:1.2em;animation:sparklePop 1s ease forwards}
+@keyframes sparklePop{0%{opacity:0;transform:scale(0)}40%{opacity:1;transform:scale(1.4)}100%{opacity:0;transform:scale(.8) translateY(-20px)}}
+
+.mini-balloon{position:absolute;font-size:1.8em;opacity:0;animation:miniFloatIn 1s ease forwards,miniBob 2.8s ease-in-out infinite 1s}
+@keyframes miniFloatIn{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes miniBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.cake-cta{margin-top:18px;font-size:1.05em;font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+
+/* ===== BALLOON GAME ===== */
+#screenBalloon{
+  background:linear-gradient(
+    160deg,
+    #6a5cff,
+    #8a6dff,
+    #7b61ff
+  );
+}
+.balloon-field{position:relative;width:100%;height:300px;margin:10px 0;overflow:hidden}
+.balloon{position:absolute;cursor:pointer;animation:rise linear infinite;user-select:none;transform-origin:center bottom;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4))}
+.balloon:hover{transform:scale(1.15)}
+.balloon.popped{animation:bpop 0.35s ease forwards;pointer-events:none}
+@keyframes rise{from{bottom:-100px}to{bottom:120%}}
+@keyframes bpop{0%{transform:scale(1)}40%{transform:scale(1.6)}100%{transform:scale(0);opacity:0}}
+
+/* SVG balloon */
+.balloon-svg{display:block}
+.bday-msg{font-size:1.7em;font-weight:700;background:linear-gradient(135deg,#ffd700,#ff6bcb,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:glow 2s infinite alternate;display:none;margin:15px 0;line-height:1.4}
+@keyframes glow{from{filter:drop-shadow(0 0 5px rgba(255,215,0,.8))}to{filter:drop-shadow(0 0 20px rgba(255,107,154,.9))}}
+
+/* ===== BEST PHOTOS ===== */
+#screen3a{background:linear-gradient(135deg,#ffecd2,#fcb69f)}
+.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:92%;max-width:520px;margin:12px auto;max-height:62vh;overflow-y:auto;padding:4px}
+.photo-frame{width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;border:3px solid rgba(255,255,255,0.7);box-shadow:0 8px 20px rgba(0,0,0,0.2);transition:.3s;cursor:pointer;background:rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:3em;position:relative}
+.photo-frame:hover{transform:scale(1.04);box-shadow:0 14px 30px rgba(0,0,0,0.3)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.55));color:#fff;font-size:.75em;padding:8px 6px 6px;border-radius:0 0 15px 15px}
+
+/* ===== JOURNEY VIDEO ===== */
+#screen3b{
+  background:linear-gradient(
+    135deg,
+    #6a5cff,
+    #8b7cff
+  );
+}
+.journey-wrap{width:92%;max-width:520px;margin:15px auto}
+.journey-video-box{width:100%;border-radius:20px;overflow:hidden;background:#000;border:3px solid rgba(255,255,255,0.25);box-shadow:0 12px 35px rgba(0,0,0,0.5)}
+.journey-video-box iframe{width:100%;height:300px;display:block;border:none}
+.journey-note{background:rgba(255,255,255,0.12);border-radius:16px;padding:14px 18px;margin-top:14px;font-size:.9em;line-height:1.6;border:1px solid rgba(255,255,255,0.25)}
+
+/* ===== WISHES ===== */
+#screen4{
+  background:linear-gradient(
+    135deg,
+    #c084fc,
+    #f9a8d4
+  );
+}
+.wishes-container{max-width:520px;width:90%;margin:0 auto;max-height:68vh;overflow-y:auto;padding:5px}
+.wish-card{background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.4);border-radius:20px;padding:20px;margin:12px 0;text-align:left;opacity:0;animation:slideIn 0.6s forwards}
+@keyframes slideIn{to{opacity:1}}
+.wish-emoji{font-size:2em;margin-bottom:8px}
+.wish-card h3{font-size:1.1em;margin-bottom:5px}
+.wish-card p{font-size:0.9em;opacity:.9;line-height:1.6;margin-bottom:0}
+.video-wish-card{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,0.5);border-radius:22px;padding:22px;margin:12px 0;text-align:center;opacity:0;animation:slideIn 0.6s forwards}
+.video-wish-card h3{font-size:1.1em;margin-bottom:6px}
+.video-wish-card p{font-size:0.88em;opacity:.85;margin-bottom:15px}
+.video-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:none;border-radius:25px;background:linear-gradient(135deg,#ff2e63,#ff6b9a);color:#fff;font-size:.95em;font-weight:600;cursor:pointer;transition:.3s;box-shadow:0 5px 18px rgba(255,46,99,.4)}
+.video-btn:hover{transform:scale(1.07);box-shadow:0 8px 25px rgba(255,46,99,.6)}
+.play-tri{width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid #fff;display:inline-block;flex-shrink:0}
+
+/* ===== LIGHTBOX ===== */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:20000;justify-content:center;align-items:center;padding:20px}
+.lightbox.open{display:flex}
+.lb-box{background:#1a1a2e;border-radius:22px;padding:22px;max-width:560px;width:95%;position:relative;border:1px solid rgba(255,255,255,0.15);max-height:92vh;overflow-y:auto}
+.lb-title{color:#fff;font-size:1.1em;font-weight:600;margin-bottom:14px}
+.lb-img{width:100%;border-radius:14px;max-height:70vh;object-fit:contain;display:block}
+.lb-close{position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;background:#ff2e63;border:none;color:#fff;font-size:1.3em;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(255,46,99,.5);transition:.2s;line-height:1;z-index:2}
+.lb-close:hover{transform:scale(1.15)}
+
+/* ===== GIFTS ===== */
+#screen5{
+  background:linear-gradient(
+    135deg,
+    #7c9cff,
+    #9c7dff
+  );
+}
+.gift-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;width:90%;max-width:520px;margin:15px auto}
+.gift-card{border-radius:22px;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;min-height:180px}
+.gift-card.unopened{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,0.35);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 12px}
+.gift-card.unopened:hover{transform:translateY(-6px);background:rgba(255,255,255,0.25);box-shadow:0 14px 30px rgba(0,0,0,0.3)}
+.gift-icon-big{font-size:3em;margin-bottom:8px;animation:giftWiggle 2s infinite;display:block}
+@keyframes giftWiggle{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.gift-card.unopened h3{font-size:.95em;margin-bottom:3px;color:#fff}
+.gift-card.unopened p{font-size:.78em;opacity:.75;margin:0;color:#fff}
+.gift-tag{background:rgba(255,255,255,0.25);border-radius:20px;padding:4px 12px;font-size:.72em;font-weight:600;margin-top:8px;display:inline-block;border:1px solid rgba(255,255,255,0.4);color:#fff}
+.gift-card.opened{border:3px solid rgba(255,255,255,0.7);box-shadow:0 0 0 4px rgba(255,215,0,0.4),0 12px 30px rgba(0,0,0,0.35);cursor:default;padding:0;overflow:hidden;animation:giftReveal .5s ease}
+@keyframes giftReveal{from{transform:scale(.85);opacity:.4}to{transform:scale(1);opacity:1}}
+.gift-card.opened img{width:100%;height:100%;min-height:180px;object-fit:cover;display:block;border-radius:19px}
+.gift-card.opened .gift-revealed-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.65));color:#fff;padding:22px 10px 10px;font-size:.82em;font-weight:600;border-radius:0 0 19px 19px;line-height:1.3}
+.gift-card.opened:hover{transform:none}
+.final-msg{background:rgba(255,255,255,0.15);border-radius:20px;padding:20px;max-width:480px;margin:15px auto;font-size:.95em;line-height:1.7;border:1px solid rgba(255,255,255,0.3)}
+
+/* ===== SHARED ===== */
+canvas#confCanvas{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;width:100%;height:100%}
+.heart{position:fixed;pointer-events:none;font-size:1.2em;animation:floatUp 1.2s linear forwards;z-index:9990}
+@keyframes floatUp{from{transform:translateY(0);opacity:1}to{transform:translateY(-110px);opacity:0}}
+.stars-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;display:none}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 2s infinite}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
+.progress{display:flex;gap:8px;margin-top:20px;justify-content:center;z-index:2;flex-wrap:wrap}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35);transition:.3s}
+.dot.on{background:#fff;transform:scale(1.3)}
+audio{display:none}
+.mute-btn{position:fixed;top:14px;right:14px;z-index:10001;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.35);color:#fff;font-size:1.1em;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.2s}
+.mute-btn:hover{background:rgba(0,0,0,.55)}
+.track-label{position:fixed;top:60px;right:14px;z-index:10001;font-size:.68em;color:rgba(255,255,255,.65);background:rgba(0,0,0,.3);padding:4px 10px;border-radius:12px;max-width:200px;text-align:right;backdrop-filter:blur(6px)}
+
+
+/* ==========================
+   MOBILE RESPONSIVE DESIGN
+   ========================== */
+@media (max-width: 768px){
+
+  body{
+    font-size:14px;
+  }
+
+  .screen{
+    padding:20px 12px;
+  }
+
+  h1{
+    font-size:1.8rem;
+    line-height:1.2;
+  }
+
+  h2{
+    font-size:1.4rem;
+  }
+
+  h3{
+    font-size:1rem;
+  }
+
+  p{
+    font-size:.9rem;
+    line-height:1.5;
+  }
+
+  .btn{
+    width:100%;
+    max-width:320px;
+    padding:14px;
+    font-size:.95rem;
+  }
+
+  /* Welcome Card */
+  .welcome-card,
+  .lock-card,
+  .final-msg{
+    width:100%;
+    max-width:100%;
+    padding:22px;
+  }
+
+  /* Cake Section */
+  .cake-stage{
+    width:100%;
+    max-width:260px;
+    transform:scale(.85);
+  }
+
+  .cake-stage.show{
+    transform:scale(.85);
+  }
+
+  .cake-stage-wrap{
+    min-height:320px;
+  }
+
+  /* Hide side decorations on mobile */
+  .mini-balloon,
+  .cracker{
+    display:none;
+  }
+
+  /* Photo Gallery */
+  .photo-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+    width:100%;
+  }
+
+  .photo-frame{
+    aspect-ratio:1;
+  }
+
+  /* Gifts */
+  .gift-grid{
+    grid-template-columns:1fr;
+    width:100%;
+  }
+
+  .gift-card{
+    min-height:160px;
+  }
+
+  /* Wishes */
+  .wishes-container{
+    width:100%;
+    max-height:65vh;
+  }
+
+  .wish-card,
+  .video-wish-card{
+    padding:16px;
+  }
+
+  /* Video */
+  .journey-video-box{
+    aspect-ratio:16/9;
+}
+
+.journey-video-box iframe,
+.journey-video-box video{
+    width:100%;
+    height:100%;
+}
+
+  /* Lightbox */
+  .lb-box{
+    width:100%;
+    padding:15px;
+  }
+
+  .lb-img{
+    max-height:60vh;
+  }
+
+  /* Balloon Game */
+  .balloon-field{
+    height:250px;
+  }
+
+  .bday-msg{
+    font-size:1.3rem;
+  }
+
+  /* Progress dots */
+  .progress{
+    gap:6px;
+  }
+
+  .dot{
+    width:8px;
+    height:8px;
+  }
+
+  /* Floating controls */
+  .mute-btn{
+    width:38px;
+    height:38px;
+    top:10px;
+    right:10px;
+  }
+
+  .track-label{
+    top:54px;
+    right:10px;
+    font-size:.6rem;
+    max-width:120px;
+  }
+}
+
+
+/* Extra Small Phones */
+@media (max-width: 480px){
+
+  h1{
+    font-size:1.5rem;
+  }
+
+  h2{
+    font-size:1.2rem;
+  }
+
+  p{
+    font-size:.85rem;
+  }
+
+  .cake-stage{
+    transform:scale(.72);
+  }
+
+  .cake-stage.show{
+    transform:scale(.72);
+  }
+
+  .journey-video-box iframe{
+    height:190px;
+  }
+
+  .welcome-emoji{
+    font-size:3rem;
+  }
+
+  .lock-emoji{
+    font-size:2.5rem;
+  }
+
+  .gift-icon-big{
+    font-size:2.4rem;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="confCanvas"></canvas>
+<div class="stars-bg" id="starsBg"></div>
+
+<!--
+==========================================================
+  GOOGLE DRIVE FILE ID SETUP
+  ----------------------------------------------------------
+  For each media file, find its Google Drive file ID from
+  the sharing link:
+    https://drive.google.com/file/d/FILE_ID_HERE/view
+
+  Then replace the placeholder IDs below:
+
+  PHOTOS (6 photos):
+    PHOTO1_ID  through  PHOTO6_ID
+
+  GIFT IMAGES (4 gifts):
+    GIFT1_ID  through  GIFT4_ID
+
+  VIDEOS (embedded as iframes — Drive allows this):
+    JOURNEY_VIDEO_ID    → Supriya's journey video
+    WISH_VIDEO1_ID      → Amma's wish video
+    WISH_VIDEO2_ID      → Nanna's wish video
+
+  Google Drive embed URL format:
+    https://drive.google.com/file/d/FILE_ID/preview
+
+  IMPORTANT: Make sure each file's sharing is set to
+  "Anyone with the link can view" for embedding to work.
+==========================================================
+-->
+
+<audio id="bgMusic" preload="auto"></audio>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-box" id="lbBox">
+    <button class="lb-close" onclick="closeLb()">✕</button>
+    <div class="lb-title" id="lbTitle"></div>
+    <div id="lbContent"></div>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<button class="mute-btn" id="muteBtn" onclick="toggleMute()" title="Mute / unmute">🔊</button>
+<div class="track-label" id="trackLabel"></div>
+
+<!-- ===== LOCK ===== -->
+<div class="screen active" id="lockScreen">
+  <div class="lock-card">
+    <div class="lock-emoji">🔐</div>
+    <h2>Secret Security Question</h2>
+    <p>Who is the most beautiful girl in the entire universe? 💖</p>
+    <input class="lock-input" id="passInput" placeholder="Type your answer…" type="text" autocomplete="off">
+    <div class="lock-hint">Hint: She's the one reading this right now 😍</div><br>
+    <button class="btn" onclick="unlock()">Unlock ✨</button>
+  </div>
+</div>
+
+<!-- ===== WELCOME ===== -->
+<div class="screen" id="screen1">
+  <div class="welcome-emoji">🎉</div>
+  <div class="welcome-card">
+    <h1>Happy 26th Birthday<br>Supriya! 🎂</h1>
+    <p>Welcome to your very own Birthday Universe — crafted with love just for you. Inside are memories, wishes, surprises and gifts made especially for you 💖✨</p>
+    <button class="btn" onclick="goTo('screen2')">Let's Celebrate 🎉</button>
+  </div>
+  <div class="progress">
+    <div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</div>
+
+<!-- ===== CAKE SEQUENCE ===== -->
+<div class="screen" id="screen2">
+  <h2 id="cakeHeading">🌸 Setting the Scene</h2>
+  <div class="stage-caption" id="stageCaption">Decorating something special for you...</div>
+  <div class="cake-stage-wrap">
+    <div class="flower-bed" id="flowerBed"></div>
+    <div class="cake-stage" id="cakeStage">
+      <!-- Fog -->
+      <div class="fog-container" id="fogContainer"></div>
+
+      <!-- Crackers / party poppers -->
+      <div class="cracker" id="crL1" style="left:-55px;top:60px">🎉</div>
+      <div class="cracker" id="crR1" style="right:-55px;top:60px">🎉</div>
+      <div class="cracker" id="crL2" style="left:-40px;top:130px">🧨</div>
+      <div class="cracker" id="crR2" style="right:-40px;top:130px">🧨</div>
+
+      <!-- Balloons beside cake -->
+      <div class="mini-balloon" id="mb1" style="left:-64px;top:20px">🎈</div>
+      <div class="mini-balloon" id="mb2" style="right:-64px;top:0px;animation-delay:.25s">🎈</div>
+      <div class="mini-balloon" id="mb3" style="left:-48px;top:100px;animation-delay:.5s">🎀</div>
+      <div class="mini-balloon" id="mb4" style="right:-48px;top:90px;animation-delay:.75s">🎀</div>
+
+      <!-- Knife -->
+      <div class="knife-wrap" id="knife">🔪</div>
+      <div class="slice-mark" id="sliceMark"></div>
+
+      <!-- THE CAKE -->
+      <div class="candle-row">
+        <div class="candle candle-c1"><div class="flame" id="f1"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-tip"></div></div><div class="candle-wick"></div><div class="candle-body"></div></div>
+        <div class="candle candle-c2"><div class="flame" id="f2"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-tip"></div></div><div class="candle-wick"></div><div class="candle-body"></div></div>
+        <div class="candle candle-c3"><div class="flame" id="f3"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-tip"></div></div><div class="candle-wick"></div><div class="candle-body"></div></div>
+        <div class="candle candle-c4"><div class="flame" id="f4"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-tip"></div></div><div class="candle-wick"></div><div class="candle-body"></div></div>
+        <div class="candle candle-c5"><div class="flame" id="f5"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-tip"></div></div><div class="candle-wick"></div><div class="candle-body"></div></div>
+        <div class="candle candle-c6"><div class="flame" id="f6"><div class="flame-outer"></div><div class="flame-inner"></div><div class="flame-tip"></div></div><div class="candle-wick"></div><div class="candle-body"></div></div>
+      </div>
+      <div class="cake-top-cap"></div>
+      <div class="cake-tier1">
+        <div class="tier1-body">
+          <div class="tier1-pearls">
+            <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cake-tier2">
+        <div class="tier2-body">
+          <div class="tier2-flowers">🌸 &nbsp; 💖 &nbsp; 🌸</div>
+        </div>
+      </div>
+      <div class="cake-tier3">
+        <div class="tier3-body">
+          <!-- Frosting drips -->
+          <div class="drip" style="left:20px;height:28px;"></div>
+          <div class="drip" style="left:55px;height:22px;"></div>
+          <div class="drip" style="left:92px;height:32px;"></div>
+          <div class="drip" style="left:130px;height:20px;"></div>
+          <div class="drip" style="left:168px;height:26px;"></div>
+          <div class="drip" style="left:205px;height:18px;"></div>
+          <div class="choco-stripe"></div>
+          <div class="tier3-deco">🍫 &nbsp; 🎂 &nbsp; 🍫</div>
+        </div>
+      </div>
+      <div class="cake-plate"></div>
+    </div>
+    <div class="cake-cta" id="cakeCta" style="display:none"></div>
+    <button class="btn" id="cakeActionBtn" style="display:none"></button>
+  </div>
+  <div class="progress">
+    <div class="dot"></div><div class="dot on"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</div>
+
+<!-- ===== BALLOON GAME — 26 balloons ===== -->
+<div class="screen" id="screenBalloon">
+  <h2>🎈 Pop All 26 Balloons!</h2>
+  <p style="font-size:.9em;opacity:.85;margin-bottom:4px">"26 years of magic, laughter and love — each balloon holds a wish for you!" 💖</p>
+  <div style="font-size:.9em;color:rgba(255,255,255,.7);margin:4px 0">Remaining: <span id="balloonCount">26</span> 🎈</div>
+  <div class="balloon-field" id="balloonField"></div>
+  <div class="bday-msg" id="bdayMsg">
+    🎊 Happy 26th Birthday, Supriya! 🎊<br>
+    <span style="font-size:.52em;-webkit-text-fill-color:#fff;line-height:1.8">26 years of sunshine, strength and sparkle.<br>Here's to a year as beautiful as you are! 💖</span>
+  </div>
+  <button class="btn" id="nextFromBalloon" style="display:none" onclick="goTo('screen3a')">📸 Best Photos ➡</button>
+  <div class="progress">
+    <div class="dot"></div><div class="dot"></div><div class="dot on"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</div>
+
+<!-- ===== BEST PHOTOS ===== -->
+<div class="screen" id="screen3a">
+  <h2>📸 Best Moments of Supriya 💖</h2>
+  <p>A collection of the most beautiful photos — each one a memory to cherish forever 🌟</p>
+  <div class="photo-grid">
+    <!--
+      Replace each PHOTO_ID below with your Google Drive file ID.
+      The thumbnail URL format: https://drive.google.com/thumbnail?id=FILE_ID&sz=w400
+      Clicking opens a full-size preview.
+    -->
+    <div class="photo-frame" onclick="openPhotoLb('1rcqM_44Eb6b13ddQEfQyBwGy3cZ-tzG2','Memory 1 ✨')">
+      <img src="https://drive.google.com/thumbnail?id=1rcqM_44Eb6b13ddQEfQyBwGy3cZ-tzG2&sz=w400" alt="Memory 1" onerror="this.parentNode.innerHTML='📷<div class=\'photo-label\'>Memory 1</div>'">
+    </div>
+    <div class="photo-frame" onclick="openPhotoLb('1OkGLf5_pGBl8jxy274CJ1pvwcmsO2B5v','Memory 2 🌸')">
+      <img src="https://drive.google.com/thumbnail?id=1OkGLf5_pGBl8jxy274CJ1pvwcmsO2B5v&sz=w400" alt="Memory 2" onerror="this.parentNode.innerHTML='🌸<div class=\'photo-label\'>Memory 2</div>'">
+    </div>
+    <div class="photo-frame" onclick="openPhotoLb('1C6_guibzz2rnV3L9xEx2_yLB2lorW0wQ','Memory 3 💖')">
+      <img src="https://drive.google.com/thumbnail?id=1C6_guibzz2rnV3L9xEx2_yLB2lorW0wQ&sz=w400" alt="Memory 3" onerror="this.parentNode.innerHTML='💖<div class=\'photo-label\'>Memory 3</div>'">
+    </div>
+    <div class="photo-frame" onclick="openPhotoLb('1eUc58qcAsbfStvFus0DczE4tud7mshAk','Memory 4 🌷')">
+      <img src="https://drive.google.com/thumbnail?id=1eUc58qcAsbfStvFus0DczE4tud7mshAk&sz=w400" alt="Memory 4" onerror="this.parentNode.innerHTML='🌷<div class=\'photo-label\'>Memory 4</div>'">
+    </div>
+    <div class="photo-frame" onclick="openPhotoLb('1J8bqO1ltpm8QkccFVx3EU-ZzCXR0S_-2','Memory 5 ⭐')">
+      <img src="https://drive.google.com/thumbnail?id=1J8bqO1ltpm8QkccFVx3EU-ZzCXR0S_-2&sz=w400" alt="Memory 5" onerror="this.parentNode.innerHTML='⭐<div class=\'photo-label\'>Memory 5</div>'">
+    </div>
+    <div class="photo-frame" onclick="openPhotoLb('1rrFbzpKWlhJh1J6aaA0wY6tQ5N6KOrOP','Memory 6 🎀')">
+      <img src="https://drive.google.com/thumbnail?id=1rrFbzpKWlhJh1J6aaA0wY6tQ5N6KOrOP&sz=w400" alt="Memory 6" onerror="this.parentNode.innerHTML='🎀<div class=\'photo-label\'>Memory 6</div>'">
+    </div>
+  </div>
+  <button class="btn" onclick="goTo('screen3b')" style="margin-top:8px">🎬 Watch Her Journey ➡</button>
+  <div class="progress">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</div>
+
+<!-- ===== JOURNEY VIDEO ===== -->
+<div class="screen" id="screen3b">
+  <h2>🎬 Supriya's Journey 💫</h2>
+  <p>From adorable childhood to brilliant graduate — watch the beautiful journey of someone truly special 🌸</p>
+  <div class="journey-wrap">
+    <div class="journey-video-box">
+      <!-- Replace JOURNEY_VIDEO_ID with your Google Drive video file ID -->
+      <iframe id="journeyFrame"
+        width="100%"
+      height="320"
+        src="https://drive.google.com/file/d/11z_xUPEMHVElzqgaR25bpy5FwgIrcsdp/preview"
+        frameborder="0"
+      allow="autoplay; fullscreen">
+      </iframe>
+    </div>
+    <div class="journey-note">
+      🌟 <em>Childhood • School Days • Graduation • Beautiful Moments</em> 🌟<br>
+      <span style="font-size:.85em;opacity:.8">Every chapter of your life has been wonderful, Supriya 💖</span>
+    </div>
+  </div>
+  <button class="btn" onclick="goTo('screen4')" style="margin-top:12px">💌 Special Wishes ➡</button>
+  <div class="progress">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</div>
+
+<!-- ===== WISHES ===== -->
+<div class="screen" id="screen4">
+  <h2>💌 Special Wishes For You</h2>
+  <div class="wishes-container">
+    <div class="wish-card" style="animation-delay:.1s">
+      <div class="wish-emoji">🌟</div>
+      <h3>You Are Extraordinary</h3>
+      <p>In a world full of ordinary, you shine like the brightest star. Your kindness, your laugh, your spirit — there's truly no one like you, Supriya.</p>
+    </div>
+    <div class="wish-card" style="animation-delay:.35s">
+      <div class="wish-emoji">💪</div>
+      <h3>26 &amp; Unstoppable</h3>
+      <p>This year marks a new chapter of adventures, growth, and dreams coming true. You have everything it takes to conquer anything you set your heart on.</p>
+    </div>
+    <!-- Amma's video wish — Replace WISH_VIDEO1_ID -->
+    <div class="video-wish-card" style="animation-delay:.6s">
+      <div class="wish-emoji">👩‍👧</div>
+      <h3>A Message From Amma 🌷</h3>
+      <p>She has a very special birthday wish just for you — tap to watch!</p>
+      <button class="video-btn" onclick="openVideoLb('10MnZOQdXQKfR14BGP-Szb0lK9J5iKVqv','Amma\'s Birthday Wish 💖')">
+        <span class="play-tri"></span> Play Amma's Wish
+      </button>
+    </div>
+    <!-- Nanna's video wish — Replace WISH_VIDEO2_ID -->
+    <div class="video-wish-card" style="animation-delay:.85s">
+      <div class="wish-emoji">👨‍👧</div>
+      <h3>A Message From Nanna 🌺</h3>
+      <p>A heartfelt wish straight from Nanna's heart — tap to play!</p>
+      <button class="video-btn" onclick="openVideoLb('1gTDZP4aYQKLXYHSOH4rVc1d4fefJZI0O','Nanna\'s Birthday Wish 💖')">
+        <span class="play-tri"></span> Play Nanna's Wish
+      </button>
+    </div>
+    <div class="video-wish-card" style="animation-delay:.85s">
+      <div class="wish-emoji">👨‍👧</div>
+      <h3>A Message From Akka, Bava 🌺</h3>
+      <p>A heartfelt wish straight from Akka's and Bava's heart — tap to play!</p>
+      <button class="video-btn" onclick="openVideoLb('1QhY0-PoZEP-e4Athx9K5-REteKOxCXmK','Akka and Bava\'s and Birthday Wish 💖')">
+        <span class="play-tri"></span> Play Birthday Wishes from Akka & Bava
+      </button>
+    </div>
+    <div class="video-wish-card" style="animation-delay:.85s">
+      <div class="wish-emoji">👨‍👧</div>
+      <h3>A Message From Grand Parents 🌺</h3>
+      <p>A heartfelt wish straight from Grand Parent's heart — tap to play!</p>
+      <button class="video-btn" onclick="openVideoLb('1pVrG5EIUJeKW5QKkFFAJAZAsd8gslUK0','Grand Parent\'s Birthday Wish 💖')">
+        <span class="play-tri"></span> Play Grand Parent's Wish
+      </button>
+    </div>
+    <div class="wish-card" style="animation-delay:1.1s">
+      <div class="wish-emoji">💖</div>
+      <h3>Always Loved</h3>
+
+    <p>💖 <strong>You are a beautiful blend of cuteness and strength.</strong></p>
+
+    <p>❤️ You love with your whole heart and give your best in everything –
+    whether in love or in anger.</p>
+
+    <p>❄️ You may get angry, but you cool down the storm and chill everyone
+    with your smile.</p>
+
+    <p>👑 You stand tall on your own decisions,
+    independent, confident, and graceful.</p>
+
+    <p>🌸 Decent by nature, intense in emotions,
+    but always genuine at heart.</p>
+
+    <p><strong>That's what makes you truly special and unforgettable!</strong></p>
+
+
+    </div>
+    <div class="wish-card" style="animation-delay:1.35s">
+      <div class="wish-emoji">🌈</div>
+      <h3>May Your Year Be Magical</h3>
+      <p>May this 26th year bring you laughter, love, health, peace and all the happiness you so beautifully deserve. Happy Birthday! 🎂✨</p>
+    </div>
+  </div>
+  <button class="btn" onclick="goTo('screen5')" style="margin-top:15px">🎁 See Your Gifts ➡</button>
+  <div class="progress">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div>
+  </div>
+</div>
+
+<!-- ===== GIFTS ===== -->
+<div class="screen" id="screen5">
+  <h2>🎁 Your Special Gifts</h2>
+  <p>Tap each gift box to unwrap your surprise! 🎀</p>
+  <div class="gift-grid">
+    <!-- Replace GIFT1_ID … GIFT4_ID with your Google Drive image file IDs -->
+    <div class="gift-card unopened" id="gc1"
+         onclick="revealGift('gc1','1BZZzH_WyXd4mj7ip0aJy6WQeHdjzCB45','Gift 1 💍','A token of how precious you are!')">
+      <span class="gift-icon-big">📦</span>
+      <h3>Gift 1</h3><p>Tap to unwrap!</p>
+      <span class="gift-tag">🎀 For Supriya</span>
+    </div>
+    <div class="gift-card unopened" id="gc2"
+         onclick="revealGift('gc2','1Sjp4xw0WkmVVfl97_jgi_lJYjO_BTtuh','Gift 2 💐','Flowers as lovely as you!')">
+      <span class="gift-icon-big">📦</span>
+      <h3>Gift 2</h3><p>Tap to unwrap!</p>
+      <span class="gift-tag">🎀 For Supriya</span>
+    </div>
+    <div class="gift-card unopened" id="gc3"
+         onclick="revealGift('gc3','13Q60QgGWXi17soa1iLzzOLuPDaCOSXfB','Gift 3 🌟','The universe has your name on it!')">
+      <span class="gift-icon-big">📦</span>
+      <h3>Gift 3</h3><p>Tap to unwrap!</p>
+      <span class="gift-tag">🎀 For Supriya</span>
+    </div>
+    <div class="gift-card unopened" id="gc4"
+         onclick="revealGift('gc4','11ublor8sCxW9e_xdzF4rvxWpX7nb9fx91','Gift 4 🍰','Because you deserve everything sweet!')">
+      <span class="gift-icon-big">📦</span>
+      <h3>Gift 4</h3><p>Tap to unwrap!</p>
+      <span class="gift-tag">🎀 For Supriya</span>
+    </div>
+  </div>
+  <div class="final-msg">
+    💖 You deserve everything beautiful in this world, Supriya.<br>
+    Thank you for being you. <strong>Happy 26th Birthday!</strong> 🎂✨<br><br>
+    <em style="font-size:.85em;opacity:.8">With all the love in the universe 🌍💫</em>
+  </div>
+  <div class="progress">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div>
+  </div>
+</div>
+
+<script>
+/* ===== MUSIC MAP ===== */
+const MUSIC={
+  lock:{src:'music.mp3',label:'🎵 Lock screen'},
+  welcome:{src:'music.mp3',label:'🎵 Welcome'},
+  flowers:{src:'music.mp3',label:'🎵 Decorating'},
+  cake:{src:'music.mp3',label:'🎵 Cake reveal'},
+  cutting:{src:'music.mp3',label:'🎵 Cake cutting'},
+  balloons:{src:'music.mp3',label:'🎵 Pop the balloons'},
+  photos:{src:'music.mp3',label:'🎵 Best moments'},
+  journey:{src:'music.mp3',label:'🎵 Her journey'},
+  wishes:{src:'music.mp3',label:'🎵 Special wishes'},
+  gifts:{src:'music.mp3',label:'🎵 Gifts'}
+};
+let musicMuted=false,currentTrackKey=null;
+const audioEl=document.getElementById('bgMusic');
+const trackLabelEl=document.getElementById('trackLabel');
+function playTrack(key,opts){
+  opts=opts||{};
+  const t=MUSIC[key];if(!t)return;
+  if(currentTrackKey===key&&!opts.restart)return;
+  currentTrackKey=key;trackLabelEl.textContent=t.label;
+  if(musicMuted)return;
+  if(audioEl.getAttribute('src')!==t.src||opts.restart)audioEl.src=t.src;
+  audioEl.volume=opts.volume||0.42;audioEl.loop=opts.loop!==false;audioEl.currentTime=0;
+  audioEl.play().catch(()=>{});
+}
+function toggleMute(){
+  musicMuted=!musicMuted;
+  document.getElementById('muteBtn').textContent=musicMuted?'🔇':'🔊';
+  if(musicMuted)audioEl.pause();
+  else if(currentTrackKey){playTrack(currentTrackKey,{restart:false});audioEl.play().catch(()=>{});}
+}
+
+/* ===== STARS ===== */
+const starsBg=document.getElementById('starsBg');
+for(let i=0;i<80;i++){
+  const s=document.createElement('div');s.className='star';
+  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${Math.random()*3+1}px;height:${Math.random()*3+1}px;animation-delay:${Math.random()*3}s;animation-duration:${Math.random()*2+1}s`;
+  starsBg.appendChild(s);
+}
+
+/* ===== UNLOCK ===== */
+function unlock(){
+  const v=document.getElementById('passInput').value.trim().toLowerCase();
+  if(v==='supriya'){goTo('screen1');launchConfetti(80);}
+  else{
+    const c=document.querySelector('.lock-card');
+    c.classList.add('shake');setTimeout(()=>c.classList.remove('shake'),500);
+    spawnHearts(window.innerWidth/2,window.innerHeight/2);
+  }
+}
+document.getElementById('passInput').addEventListener('keypress',e=>{if(e.key==='Enter')unlock();});
+playTrack('lock');
+
+/* ===== NAV ===== */
+const nightScreens=['screen2','screenBalloon','screen3b'];
+function goTo(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  starsBg.style.display=nightScreens.includes(id)?'block':'none';
+  if(id==='screen1')playTrack('welcome');
+  if(id==='screen2')startCakeSequence();
+  if(id==='screenBalloon'){initBalloons();playTrack('balloons');}
+  if(id==='screen3a')playTrack('photos');
+  if(id==='screen3b')playTrack('journey');
+  if(id==='screen4')playTrack('wishes');
+  if(id==='screen5')playTrack('gifts');
+  if(['screen3a','screen4','screen5'].includes(id))launchConfetti(35);
+  window.scrollTo(0,0);
+}
+
+/* ===== HEARTS ===== */
+document.addEventListener('click',e=>{
+  if(['BUTTON','INPUT'].includes(e.target.tagName))return;
+  spawnHearts(e.clientX,e.clientY);
+});
+function spawnHearts(cx,cy){
+  const icons=['💖','💗','💝','✨','🌸'];
+  for(let i=0;i<3;i++){
+    const h=document.createElement('div');h.className='heart';
+    h.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+    h.style.left=cx+'px';h.style.top=cy+'px';
+    h.style.animationDelay=(i*.12)+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1400);
+  }
+}
+
+/* ===== CONFETTI ===== */
+const canvas=document.getElementById('confCanvas');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+let pieces=[];
+function launchConfetti(count){
+  count=count||100;
+  for(let i=0;i<count;i++)pieces.push({
+    x:Math.random()*canvas.width,y:-10,r:Math.random()*6+3,
+    d:Math.random()*2+1,vx:(Math.random()-.5)*5,
+    color:`hsl(${Math.random()*360},90%,65%)`,
+    shape:Math.random()>.5?'circle':'rect',
+    w:Math.random()*10+5,h:Math.random()*6+3,
+    rot:Math.random()*360,rotV:(Math.random()-.5)*5
+  });
+}
+(function drawConf(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  pieces.forEach((p,i)=>{
+    ctx.fillStyle=p.color;ctx.save();
+    ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+    if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.r,0,Math.PI*2);ctx.fill();}
+    else ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+    ctx.restore();
+    p.y+=p.d;p.x+=p.vx;p.rot+=p.rotV;
+    if(p.y>canvas.height+20)pieces.splice(i,1);
+  });
+  requestAnimationFrame(drawConf);
+})();
+
+/* ===== CAKE SEQUENCE ===== */
+let cakeSeqStarted=false;
+function startCakeSequence(){
+  if(cakeSeqStarted)return;
+  cakeSeqStarted=true;
+  resetCakeUI();
+  playTrack('flowers');
+  buildFlowers();
+  setCaption('Decorating something magical for you... 🌸');
+  setTimeout(()=>{setCaption('The flowers are perfect. Now for the grand centrepiece...✨',true);},2600);
+  setTimeout(()=>{
+    document.getElementById('cakeHeading').textContent='🎂 Your Birthday Cake';
+    setCaption('Ta-da! A masterpiece baked with all our love 💖');
+    document.getElementById('cakeStage').classList.add('show');
+    playTrack('cake');
+    setTimeout(lightCandles,500);
+    setTimeout(showMiniBalloons,800);
+  },3600);
+  setTimeout(showCutCta,6400);
+}
+function resetCakeUI(){
+  document.getElementById('cakeHeading').textContent='🌸 Setting the Scene';
+  document.getElementById('cakeStage').classList.remove('show');
+  document.getElementById('cakeCta').style.display='none';
+  document.getElementById('cakeActionBtn').style.display='none';
+  document.getElementById('knife').classList.remove('show','slice');
+  document.getElementById('sliceMark').classList.remove('cut');
+  document.getElementById('fogContainer').classList.remove('active');
+  ['f1','f2','f3','f4','f5','f6'].forEach(id=>{
+    const f=document.getElementById(id);if(f){f.classList.remove('lit','off');}
+  });
+  ['crL1','crR1','crL2','crR2'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.classList.remove('fire');
+  });
+}
+function setCaption(text,fadeFirst){
+  const el=document.getElementById('stageCaption');
+  if(fadeFirst){el.classList.add('fade');setTimeout(()=>{el.textContent=text;el.classList.remove('fade');},400);}
+  else el.textContent=text;
+}
+function buildFlowers(){
+  const bed=document.getElementById('flowerBed');bed.innerHTML='';
+  const kinds=['pink','peach','lilac','white','pink','peach'];
+  kinds.forEach((kind,i)=>{
+    const f=document.createElement('div');f.className=`flower ${kind}`;
+    f.style.animationDelay=(i*0.17)+'s';
+    f.innerHTML=`<div class="stem"></div><div class="leaf l"></div><div class="leaf r"></div><div class="bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>`;
+    bed.appendChild(f);
+  });
+  for(let i=0;i<8;i++){
+    setTimeout(()=>{
+      const p=document.createElement('div');p.className='petal-fall';p.textContent='🌸';
+      p.style.left=(5+Math.random()*88)+'%';
+      p.style.animationDuration=(2.2+Math.random()*1.6)+'s';
+      bed.appendChild(p);setTimeout(()=>p.remove(),4000);
+    },i*300);
+  }
+}
+function lightCandles(){
+  ['f1','f2','f3','f4','f5','f6'].forEach((id,i)=>{
+    setTimeout(()=>{const f=document.getElementById(id);if(f)f.classList.add('lit');},i*160);
+  });
+}
+function showMiniBalloons(){
+  ['mb1','mb2','mb3','mb4'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.opacity='1';
+  });
+}
+function showCutCta(){
+  const cta=document.getElementById('cakeCta');
+  const btn=document.getElementById('cakeActionBtn');
+  cta.textContent='✨ Close your eyes, make a wish, then cut the cake! ✨';
+  cta.style.display='block';
+  btn.textContent='🔪 Cut the Cake!';
+  btn.style.display='inline-block';
+  btn.onclick=doCutCake;
+}
+
+function doCutCake(){
+  const btn=document.getElementById('cakeActionBtn');
+  btn.disabled=true;
+  document.getElementById('cakeCta').textContent='Your wish is flying to the stars... 🌟';
+  playTrack('cutting',{restart:true});
+
+  // 1. Show knife
+  const knife=document.getElementById('knife');
+  knife.classList.add('show');
+  setTimeout(()=>{
+    knife.classList.add('slice');
+    document.getElementById('sliceMark').classList.add('cut');
+  },350);
+
+  // 2. Fire crackers
+  setTimeout(()=>{
+    ['crL1','crR1','crL2','crR2'].forEach((id,i)=>{
+      setTimeout(()=>{
+        const el=document.getElementById(id);
+        if(el){el.classList.add('fire');}
+      },i*180);
+    });
+    fireBurstParticles();
+  },700);
+
+  // 3. Blow out candles with smoke
+  setTimeout(()=>{
+    ['f1','f2','f3','f4','f5','f6'].forEach((id,i)=>{
+      setTimeout(()=>{
+        const f=document.getElementById(id);
+        if(f){f.classList.remove('lit');f.classList.add('off');}
+        // spawn smoke
+        const candle=f?f.closest('.candle'):null;
+        if(candle){
+          for(let s=0;s<3;s++){
+            setTimeout(()=>{
+              const sm=document.createElement('div');sm.className='smoke puff';
+              sm.style.left=(Math.random()*14-4)+'px';
+              sm.style.top='-8px';
+              sm.style.animationDuration=(1.2+Math.random()*.5)+'s';
+              candle.appendChild(sm);
+              setTimeout(()=>sm.remove(),1800);
+            },s*200);
+          }
+        }
+      },i*140);
+    });
+  },1100);
+
+  // 4. EPIC FOG / DRY ICE
+  setTimeout(()=>{
+    spawnFog();
+    launchConfetti(150);
+  },1600);
+
+  // 5. More sparkles and balloons float up
+  setTimeout(()=>{
+    spawnSparkles();
+    ['mb1','mb2','mb3','mb4'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el){el.style.transition='transform 1.6s ease-out';el.style.transform='translateY(-80px)';}
+    });
+  },2000);
+
+  // 6. Final message
+  setTimeout(()=>{
+    document.getElementById('cakeCta').textContent='🎉 Happy Birthday Supriya! The cake is all yours! 🎂';
+    btn.textContent='🎈 Pop Some Balloons ➡';
+    btn.disabled=false;
+    btn.onclick=()=>goTo('screenBalloon');
+    launchConfetti(100);
+  },3200);
+}
+
+function fireBurstParticles(){
+  const stage=document.getElementById('cakeStage');
+  const bits=['✨','🎊','⭐','💫','🌟','🎉','💥'];
+  for(let i=0;i<18;i++){
+    const b=document.createElement('div');b.className='confetti-burst';
+    b.textContent=bits[i%bits.length];
+    const fromLeft=i%2===0;
+    b.style.left=fromLeft?'-10px':'290px';
+    b.style.bottom=(40+Math.random()*120)+'px';
+    const bx=(fromLeft?1:-1)*(50+Math.random()*90);
+    const by=-(50+Math.random()*100);
+    b.style.setProperty('--bx',bx+'px');
+    b.style.setProperty('--by',by+'px');
+    b.style.setProperty('--br',(Math.random()*200-100)+'deg');
+    b.style.animationDelay=(0.1+i*0.06)+'s';
+    stage.appendChild(b);
+    setTimeout(()=>b.remove(),2200);
+  }
+}
+
+function spawnFog(){
+  const fg=document.getElementById('fogContainer');
+  fg.classList.add('active');
+  const colors=['rgba(200,210,255,0.7)','rgba(220,230,255,0.65)','rgba(240,240,255,0.6)','rgba(210,220,255,0.75)'];
+  for(let i=0;i<22;i++){
+    setTimeout(()=>{
+      const p=document.createElement('div');p.className='fog-puff';
+      const size=60+Math.random()*80;
+      p.style.width=size+'px';p.style.height=size+'px';
+      p.style.left=(Math.random()*110-10)+'%';
+      p.style.bottom='0px';
+      p.style.background=`radial-gradient(circle,${colors[i%colors.length]},rgba(200,210,255,0.15),transparent)`;
+      const dur=3+Math.random()*2;
+      p.style.animationDuration=dur+'s';
+      p.style.animationDelay=(Math.random()*.5)+'s';
+      fg.appendChild(p);
+      setTimeout(()=>p.remove(),(dur+0.5)*1000);
+    },i*120);
+  }
+  // Keep spawning for 5 seconds
+  let fogTimer=setInterval(()=>{
+    for(let j=0;j<3;j++){
+      const p=document.createElement('div');p.className='fog-puff';
+      const size=50+Math.random()*70;
+      p.style.width=size+'px';p.style.height=size+'px';
+      p.style.left=(Math.random()*110-10)+'%';
+      p.style.bottom='0px';
+      const dur=2.5+Math.random()*2;
+      p.style.animationDuration=dur+'s';
+      fg.appendChild(p);
+      setTimeout(()=>p.remove(),(dur+0.5)*1000);
+    }
+  },400);
+  setTimeout(()=>{clearInterval(fogTimer);},5000);
+}
+
+function spawnSparkles(){
+  const stage=document.getElementById('cakeStage');
+  const s_emojis=['✨','⭐','💫','🌟'];
+  for(let i=0;i<14;i++){
+    setTimeout(()=>{
+      const sp=document.createElement('div');sp.className='sparkle';
+      sp.textContent=s_emojis[i%s_emojis.length];
+      sp.style.left=(5+Math.random()*90)+'%';
+      sp.style.top=(10+Math.random()*80)+'%';
+      sp.style.animationDelay=(Math.random()*.4)+'s';
+      stage.appendChild(sp);
+      setTimeout(()=>sp.remove(),1400);
+    },i*100);
+  }
+}
+
+/* ===== 26 BALLOONS GAME ===== */
+const BALLOON_COLORS=[
+  ['#FF6B9A','#FF2E63'],['#A78BFA','#7C3AED'],['#34D399','#059669'],
+  ['#FBBF24','#F59E0B'],['#60A5FA','#2563EB'],['#F87171','#DC2626'],
+  ['#F472B6','#EC4899'],['#4ADE80','#16A34A'],['#FB923C','#EA580C'],
+  ['#C084FC','#9333EA'],['#22D3EE','#0891B2'],['#FCD34D','#D97706'],
+  ['#86EFAC','#22C55E'],['#FDA4AF','#F43F5E'],['#A5F3FC','#06B6D4']
+];
+const BALLOON_TOTAL=26;
+let balloonPopped=0;
+
+function makeBalloonSVG(color1,color2,size){
+  return `<svg class="balloon-svg" width="${size}" height="${Math.round(size*1.35)}" viewBox="0 0 100 135" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bg${color1.replace('#','')}" cx="38%" cy="32%" r="60%">
+        <stop offset="0%" stop-color="${color1}" stop-opacity="1"/>
+        <stop offset="100%" stop-color="${color2}" stop-opacity="1"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="50" cy="52" rx="42" ry="48" fill="url(#bg${color1.replace('#','')})"/>
+    <ellipse cx="38" cy="36" rx="12" ry="10" fill="rgba(255,255,255,0.28)" transform="rotate(-20,38,36)"/>
+    <polygon points="44,100 56,100 50,112" fill="${color2}"/>
+    <path d="M50,112 Q54,122 50,132 Q46,122 50,112" stroke="${color2}" stroke-width="2" fill="none"/>
+  </svg>`;
+}
+
+function initBalloons(){
+  balloonPopped=0;
+  document.getElementById('bdayMsg').style.display='none';
+  document.getElementById('nextFromBalloon').style.display='none';
+  document.getElementById('balloonCount').textContent=BALLOON_TOTAL;
+  const field=document.getElementById('balloonField');field.innerHTML='';
+  for(let i=0;i<BALLOON_TOTAL;i++){
+    const b=document.createElement('div');b.className='balloon';
+    const ci=i%BALLOON_COLORS.length;
+    const [c1,c2]=BALLOON_COLORS[ci];
+    const size=44+Math.random()*22;
+    b.innerHTML=makeBalloonSVG(c1,c2,Math.round(size));
+    b.style.left=(2+Math.random()*88)+'%';
+    b.style.animationDuration=(4+Math.random()*6)+'s';
+    b.style.animationDelay=(Math.random()*5)+'s';
+    b.addEventListener('click',()=>popBalloon(b));
+    field.appendChild(b);
+  }
+}
+
+function popBalloon(el){
+  if(el.classList.contains('popped'))return;
+  el.classList.add('popped');balloonPopped++;
+  document.getElementById('balloonCount').textContent=Math.max(0,BALLOON_TOTAL-balloonPopped);
+  const rect=el.getBoundingClientRect();
+  spawnHearts(rect.left+rect.width/2,rect.top+rect.height/2);
+  launchConfetti(8);
+  if(balloonPopped>=BALLOON_TOTAL){
+    setTimeout(()=>{
+      document.getElementById('bdayMsg').style.display='block';
+      document.getElementById('nextFromBalloon').style.display='inline-block';
+      launchConfetti(160);
+    },800);
+  }
+}
+
+/* ===== LIGHTBOX ===== */
+function openLb(title,contentHTML,caption){
+  document.getElementById('lbTitle').textContent=title;
+  document.getElementById('lbContent').innerHTML=contentHTML;
+  document.getElementById('lbCaption').textContent=caption||'';
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLb(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lbContent').innerHTML='';
+}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLb();});
+
+function openPhotoLb(fileId,title){
+  const previewUrl=`https://drive.google.com/file/d/${fileId}/preview`;
+  openLb(title,`<iframe src="${previewUrl}" style="width:100%;height:70vh;border:none;border-radius:14px" allowfullscreen></iframe>`,'');
+}
+function openVideoLb(fileId, title) {
+  const previewUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+
+  openLb(
+    title,
+    `
+    <div style="position:relative;width:100%;padding-top:56.25%;">
+      <iframe
+        src="${previewUrl}"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        loading="lazy"
+        style="
+          position:absolute;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          border:none;
+          border-radius:14px;
+          background:#000;
+        ">
+      </iframe>
+    </div>
+    `,
+    ''
+  );
+}
+
+/* ===== GIFTS ===== */
+function revealGift(cardId,fileId,title,desc){
+  const card=document.getElementById(cardId);
+  if(!card||card.classList.contains('opened'))return;
+  spawnHearts(card.getBoundingClientRect().left+card.offsetWidth/2,card.getBoundingClientRect().top+card.offsetHeight/2);
+  launchConfetti(40);
+  card.classList.remove('unopened');card.classList.add('opened');
+  const thumbUrl=`https://drive.google.com/thumbnail?id=${fileId}&sz=w400`;
+  card.innerHTML=`
+    <img src="${thumbUrl}" alt="${title}"
+      onerror="this.style.display='none';this.nextElementSibling.style.paddingTop='50px'">
+    <div class="gift-revealed-label">🎁 ${title}<br><span style="font-weight:400;font-size:.88em;opacity:.85">${desc}</span></div>`;
+  card.onclick=null;
+}
+</script>
+</body>
+</html>
